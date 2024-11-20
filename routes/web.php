@@ -25,11 +25,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
     Route::get('/project', [ProjectController::class, 'index'])->name('project.index');
     Route::post('/project', [ProjectController::class, 'store'])->name('project.create');
     Route::get('/project/{id}', [ProjectController::class, 'show'])->name('project.show');
+    Route::put('/project/{id}', [ProjectController::class, 'update'])->name('project.update');
     Route::delete('/project/{id}', [ProjectController::class, 'destroy'])->name('project.destroy');
+
     Route::post('/board', [BoardController::class, 'store'])->name('board.create');
+
     Route::post('/ticket', [TicketController::class, 'store'])->name('ticket.create');
     Route::put('/ticket/{id}', [TicketController::class, 'move'])->name('ticket.move');
 });

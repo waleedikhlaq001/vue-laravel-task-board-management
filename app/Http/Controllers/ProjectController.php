@@ -104,4 +104,35 @@ public function destroy($id, Request $request)
     }
 }
 
+public function update(Request $request, $id)
+{
+    $validatedData = $request->validate([
+        'title' => 'required|string|max:255',
+        'description' => 'nullable|string',
+    ]);
+
+    try {
+        $userId = Auth::id();
+
+        $project = Project::where('id', $id)
+            ->where('user_id', $userId)
+            ->firstOrFail();
+
+        $project->update([
+            'title' => $validatedData['title'],
+            'description' => $validatedData['description'] ?? null,
+        ]);
+
+        return response()->json([
+            'message' => 'Project updated successfully!',
+            'project' => $project,
+        ], 200);
+
+    } catch (\Exception $e) {
+        return response()->json([
+            'message' => 'Failed to update the project.',
+            'error' => $e->getMessage(),
+        ], 500);
+    }
+}
 }
