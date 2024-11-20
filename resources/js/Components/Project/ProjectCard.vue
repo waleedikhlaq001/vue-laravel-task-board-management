@@ -20,8 +20,9 @@
                 <InputLabel class="mt-2">Description:</InputLabel>
                 <textarea v-model="editProject.description" class="w-full rounded border-gray-300" ></textarea>
 
-                <div class="flex justify-end">
-                    <PrimaryButton @click.prevent="updateProject" class="mt-3">Update</PrimaryButton>
+                <div class="flex justify-end mt-3 gap-3">
+                    <SecondaryButton @click.prevent="showEditProject = false">Cancel</SecondaryButton>
+                    <PrimaryButton @click.prevent="updateProject" class="">Update</PrimaryButton>
                 </div>
             </div>
         </Modal>
@@ -37,6 +38,7 @@ import Modal from '../Modal.vue';
 import TextInput from '../TextInput.vue';
 import InputLabel from '../InputLabel.vue';
 import PrimaryButton from '../PrimaryButton.vue';
+import SecondaryButton from '../SecondaryButton.vue';
 
   const props = defineProps({
       project: {

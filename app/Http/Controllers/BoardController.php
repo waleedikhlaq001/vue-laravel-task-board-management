@@ -36,4 +36,20 @@ class BoardController extends Controller
             ], 500);
         }
     }
+
+    public function destroy($id, Request $request)
+{
+    $board = Board::where('id', $id)->first();
+
+    if (!$board) {
+        return response()->json(['message' => 'Board not found'], 404);
+    }
+
+    try {
+        $board->delete();
+        return response()->json(['message' => 'Board deleted successfully!'], 200);
+    } catch (\Exception $e) {
+        return response()->json(['message' => 'Failed to delete the board.', 'error' => $e->getMessage()], 500);
+    }
+}
 }

@@ -1,11 +1,15 @@
 <template>
-    <BoardLayout class="p-2 overflow-y-auto ">
-          <h1 class="flex justify-between items-center font-extrabold text-2xl">
+    <BoardLayout class="overflow-y-auto ">
+          <h1 class="flex justify-between items-center font-extrabold text-2xl sticky top-0 bg-gray-100 p-2">
               <span class="font-extrabold text-2xl">{{ props.board.title }}</span>
-              <PlusCircleIcon class="size-6 cursor-pointer stroke-green-400" @click.prevent="showTicketFrom = !showTicketFrom"></PlusCircleIcon>
+
+                <div class="flex gap-3">
+                    <PlusCircleIcon class="size-6 cursor-pointer stroke-green-400" @click.prevent="showTicketFrom = !showTicketFrom"></PlusCircleIcon>
+                    <TrashIcon class="size-5 cursor-pointer stroke-rose-400" @click.prevent="deleteBoard(props.board.id)"></TrashIcon>
+                </div>
           </h1>
 
-          <div class="flex flex-col gap-3">
+          <div class="flex flex-col gap-3 p-2">
               <TicketStatic :board="board" v-if="showTicketFrom" />
               <Draggable
                           group="board"
@@ -22,7 +26,7 @@
 </template>
 
 <script setup>
-  import { PlusCircleIcon } from '@heroicons/vue/24/outline';
+  import { PlusCircleIcon, TrashIcon } from '@heroicons/vue/24/outline';
   import Draggable from 'vuedraggable';
   import BoardLayout from '@/Components/Board/Layout.vue'
   import TicketStatic from '@/Components/Ticket/Static.vue';
@@ -50,6 +54,16 @@ import axios from 'axios';
     }
  }
 
+  }
+
+  const deleteBoard = async (id) => {
+        try{
+            const response = await axios.delete(`/board/${id}`);
+            console.log('delete board done', response);
+            window.location.reload();
+        } catch(error) {
+            console.log('delete board error ', error);
+        }
   }
   </script>
 

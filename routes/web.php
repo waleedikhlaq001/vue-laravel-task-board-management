@@ -33,8 +33,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/project/{id}', [ProjectController::class, 'destroy'])->name('project.destroy');
 
     Route::post('/board', [BoardController::class, 'store'])->name('board.create');
+    Route::delete('/board/{id}', [BoardController::class, 'destroy'])->name('board.destroy');
 
     Route::post('/ticket', [TicketController::class, 'store'])->name('ticket.create');
+    Route::put('/ticket/update/{id}', [TicketController::class, 'update'])->name('ticket.update');
+    Route::delete('/ticket/{id}', [TicketController::class, 'destroy'])->name('ticket.destroy');
     Route::put('/ticket/{id}', [TicketController::class, 'move'])->name('ticket.move');
 });
 
