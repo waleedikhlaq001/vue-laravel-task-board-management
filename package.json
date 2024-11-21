@@ -18,7 +18,8 @@
         "tailwindcss": "^3.2.1",
         "vite": "^5.0",
         "vue": "^3.4.0",
-        "vuedraggable": "^4.1.0"
+        "vuedraggable": "^4.1.0",
+        "vue-toastification": "^2.0.0-rc.5"
     },
     "dependencies": {
         "dayjs": "^1.11.13"
