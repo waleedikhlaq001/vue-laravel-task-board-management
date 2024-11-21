@@ -70,12 +70,15 @@ const submit = () => {
             </div>
 
             <div class="mt-4 block">
-                <label class="flex items-center">
+                <!-- <label class="flex items-center">
                     <Checkbox name="remember" v-model:checked="form.remember" />
                     <span class="ms-2 text-sm text-gray-600"
                         >Remember me</span
                     >
-                </label>
+                </label> -->
+                <Link :href="route('register')" class="ms-2 text-sm text-gray-600 underline">
+                    Register
+                </Link>
             </div>
 
             <div class="mt-4 flex items-center justify-end">

@@ -17,7 +17,7 @@ const showingNavigationDropdown = ref(false);
                 class="border-b border-gray-100 bg-white"
             >
                 <!-- Primary Navigation Menu -->
-                <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div class="mx-[4rem] px-4 sm:px-6 lg:px-8">
                     <div class="flex h-16 justify-between">
                         <div class="flex">
                             <!-- Logo -->
@@ -196,7 +196,7 @@ const showingNavigationDropdown = ref(false);
             </header>
 
             <!-- Page Content -->
-            <main>
+            <main class="mx-[4rem]">
                 <slot />
             </main>
         </div>

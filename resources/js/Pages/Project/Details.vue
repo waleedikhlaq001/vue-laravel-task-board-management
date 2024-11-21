@@ -1,5 +1,5 @@
 <template>
-     <Head title="Project Board" />
+     <Head :title="project.title" />
 
 <AuthenticatedLayout>
     <div class="flex flex-col mx-5">

@@ -20,8 +20,8 @@
                 <textarea v-model="editTicket.description" class="w-full rounded border-gray-300" ></textarea>
 
                 <div class="flex justify-end gap-3 mt-3">
-                    <SecondaryButton @click.prevent="showTicketModal = false">Cancel</SecondaryButton>
-                    <PrimaryButton @click.prevent="updateTicket" class="">Update</PrimaryButton>
+                    <Button class="w-40 md:mt-5 text-purple-800 border border-purple-800 font-bold" variant="ghost" @click.prevent="showTicketModal = false">Cancel</Button>
+                    <Button class="w-40 md:mt-5 font-bold" variant="primary" @click.prevent="updateTicket">Update</Button>
                 </div>
             </div>
     </Modal>
@@ -35,8 +35,7 @@ import TicketLayout from './Layout.vue';
 import Modal from '../Modal.vue';
 import InputLabel from '../InputLabel.vue';
 import TextInput from '../TextInput.vue';
-import PrimaryButton from '../PrimaryButton.vue';
-import SecondaryButton from '../SecondaryButton.vue';
+import Button from '../Form/Button.vue';
 import axios from 'axios';
 
 const props = defineProps({

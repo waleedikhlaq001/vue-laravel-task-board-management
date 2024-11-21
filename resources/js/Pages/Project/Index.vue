@@ -2,10 +2,9 @@
     <Head title="Project" />
 
 <AuthenticatedLayout>
-    <div class="flex flex-col gap-10 mx-8">
+    <div class="flex flex-col gap-10 mx-8 mt-3">
     <h1 class="font-bold text-2xl">Your Projects</h1>
     <ProjectAdd />
-
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       <ProjectCard v-for="project in projectAll" :key="project.id" :project="project" />
     </div>
