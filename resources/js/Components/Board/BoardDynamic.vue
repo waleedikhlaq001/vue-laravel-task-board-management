@@ -1,10 +1,10 @@
 <template>
-    <BoardLayout class="overflow-y-auto ">
+    <BoardLayout ref="boardContainer" class="overflow-y-auto ">
           <h1 class="flex justify-between items-center font-extrabold text-2xl sticky top-0 bg-gray-100 p-2">
               <span class="font-extrabold text-2xl">{{ props.board.title }}</span>
 
                 <div class="flex gap-3">
-                    <PlusCircleIcon class="size-6 cursor-pointer stroke-green-400" @click.prevent="showTicketFrom = !showTicketFrom"></PlusCircleIcon>
+                    <PlusCircleIcon class="size-6 cursor-pointer stroke-green-400" @click.prevent="toggleTicketForm"></PlusCircleIcon>
                     <TrashIcon class="size-5 cursor-pointer stroke-rose-400" @click.prevent="deleteBoard(props.board.id)"></TrashIcon>
                 </div>
           </h1>
@@ -16,6 +16,7 @@
                           v-model="props.board.tickets"
                           @change="handleChange"
                           class="flex flex-col gap-3 min-h-60"
+                          :itemKey="`${props.board.id}`"
                   >
                   <template #item="{ element }">
                       <TicketDynamic :ticket="element" />
@@ -39,6 +40,7 @@ import axios from 'axios';
   });
 
   const showTicketFrom = ref(false);
+  const boardContainer = ref(null);
 
  async function handleChange(event) {
 
@@ -65,7 +67,13 @@ import axios from 'axios';
             console.log('delete board error ', error);
         }
   }
-  </script>
+
+  const toggleTicketForm = () => {
+    showTicketFrom.value = !showTicketFrom.value;
+
+    boardContainer.value.$el.scrollTo({ top: 0, behavior: 'smooth' });
+};
+</script>
 
   <style>
 
